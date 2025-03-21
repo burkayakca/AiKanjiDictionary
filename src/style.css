@@ -1,0 +1,133 @@
+:root {
+    --light-bg: #f9f9f9;
+    --light-text: #222;
+    --light-table-bg: #fff;
+    --light-border: #ddd;
+
+    --dark-bg: #222;
+    --dark-text: white;
+    --dark-table-bg: #333;
+    --dark-border: #4CAF50;
+
+    --accent-color: #4CAF50;
+    --accent-green: #14A44D;
+    --accent-blue: #3B71CA;
+    --accent-yellow: #E4A11B;
+    --accent-red: #DC4C64;
+}
+
+/* Light Mode */
+@media (prefers-color-scheme: light) {
+
+    body {
+        background-color: var(--light-bg)
+    }
+
+    .input-p {
+        color: var(--light-text)
+    }
+    
+    .kanji-container {
+        background-color: var(--light-bg);
+        color: var(--light-text);
+    }
+    .kanji-container h1 { color: var(--accent-color); }
+    .kanji-container table { background-color: var(--light-table-bg); color: var(--light-text); }
+    .kanji-container th { background: var(--accent-color); color: white; }
+    .kanji-container td { border-bottom: 1px solid var(--light-border); }
+
+        .kanji-input {
+        border: 2px solid var(--light-text);
+        color: var(--light-text);
+    }
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+
+    body {
+        background-color: var(--dark-bg)
+    }
+
+    .input-p {
+        color: var(--dark-text)
+    }
+
+    .kanji-container {
+        background-color: var(--dark-bg);
+        color: var(--dark-text);
+    }
+    .kanji-container h1 { color: var(--accent-color); }
+    .kanji-container table { background-color: var(--dark-table-bg); color: var(--dark-text); }
+    .kanji-container th { background: var(--accent-color); color: white; }
+    .kanji-container td { border-bottom: 1px solid var(--dark-border); }
+
+    .kanji-input {
+        border: 2px solid var(--dark-text);
+        color: var(--dark-text);
+    }
+}
+
+.emoji {
+    font-family: "Noto Color Emoji", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+  
+body{
+    display: flex;
+    justify-content: center;
+}
+
+.kanji-box {
+    font-size: 75px;
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-family: "Noto Serif JP", serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+}
+  
+/* General Styling */
+.kanji-container {
+    padding: 15px;
+    border-radius: 10px;
+    font-family: "Noto Sans JP", serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+}
+.kanji-container table {
+    width: 120%;
+    border-collapse: collapse;
+}
+.kanji-container th, .kanji-container td {
+    padding: 15px;
+}
+
+.kanji-title {
+    text-align: center; 
+    font-size: 80px;
+}
+
+
+.kanji-input {
+    margin:15px;
+    padding: 10px;
+
+}
+
+.input-p {
+    font-size: 18px;
+}
+
+.kanji-p {
+    font-size:18px;
+    
+}
+
+.btn {
+    margin: 15px
+}
