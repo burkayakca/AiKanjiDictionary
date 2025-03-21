@@ -61,14 +61,9 @@ function App() {
             {isLoading ? "Loading..." : "Submit"} {/* Show loading text */}
           </button>
         </div>
-        {isLoading && (
-          <div className="spinner-border text-primary" role="status">
-            <span className="visually-hidden">Loading...</span>
-          </div>
-        )}
-        {errorMessage && <p className="error-message">{errorMessage}</p>}
+        
         <dl className="dictionary">
-          {jsonfile ? createEntry(jsonfile, 0) : <p className="input-p">Waiting for query.</p>}
+          {jsonfile ? createEntry(jsonfile, 0) : <p className="input-p">Waiting for query / No Data</p>}
         </dl>
       </div>
     );
