@@ -20,8 +20,10 @@ function App() {
     const [jsonfile, setJsonfile] = useState(null);
     const [inputKanji, setInputKanji] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
+    const [isLoading, setIsLoading] = useState(false); // New state for loader
 
     const handleFetchKanji = async () => {
+        setIsLoading(true); // Show loader
         try {
             const data = await getKanji(inputKanji);
             console.log('Fetched data:', data); // Debug log
@@ -35,6 +37,8 @@ function App() {
         } catch (error) {
             console.error('Error fetching the Kanji data:', error);
             setErrorMessage("An error occurred while fetching the Kanji data. Please try again.");
+        } finally {
+            setIsLoading(false); // Hide loader
         }
     };
 
@@ -48,11 +52,23 @@ function App() {
             onChange={(e) => setInputKanji(e.target.value)}
             placeholder="Enter Kanji"
           />
-          <button className="btn btn-primary btn-sm text-nowrap" type="submit" onClick={handleFetchKanji}>Submit</button>
+          <button
+            className="btn btn-primary btn-sm text-nowrap"
+            type="submit"
+            onClick={handleFetchKanji}
+            disabled={isLoading} // Disable button while loading
+          >
+            {isLoading ? "Loading..." : "Submit"} {/* Show loading text */}
+          </button>
         </div>
+        {isLoading && (
+          <div className="spinner-border text-primary" role="status">
+            <span className="visually-hidden">Loading...</span>
+          </div>
+        )}
         {errorMessage && <p className="error-message">{errorMessage}</p>}
         <dl className="dictionary">
-          {jsonfile ? createEntry(jsonfile, 0) : <p className="input-p">No data available</p>}
+          {jsonfile ? createEntry(jsonfile, 0) : <p className="input-p">Waiting for query.</p>}
         </dl>
       </div>
     );
