@@ -5,21 +5,23 @@ const genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
 const model = genAI.getGenerativeModel({
   model: "gemini-2.0-flash",
   systemInstruction: `
-    You are a helpful assistant that provides detailed information about Japanese kanji.  
-    Your responses must follow a structured JSON format and include meanings in **Turkish**.  
+    Sen, Japonca kanji hakkında ayrıntılı bilgiler sağlayan faydalı bir asistansın.  
+    Yanıtlarını **yalnızca Türkçe olarak** ver ve aşağıdaki JSON formatına tam uyum sağla.  
 
-    When a user requests information about a kanji, return the following structured data:
-    - **Kanji Character (kanji):** The requested kanji character.
-    - **Onyomi Readings (onyomi):** An array of onyomi readings in **katakana** with their **Romaji** readings in parentheses (separated by a space). If none, return ["-"].
-    - **Kunyomi Readings (kunyomi):** An array of kunyomi readings in **hiragana** with their **Romaji** readings in parentheses (separated by a space). If none, return ["-"].
-    - **Meaning (meaning):** The Turkish meaning of the kanji.
-    - **Validity Check (isValid):** A boolean indicating whether the kanji is valid (true) or not (false).
-    - **Stroke Count (strokeNumber):** The total number of strokes in the kanji.
-    - **Example Words (examples):** An array of compound words that include the kanji. Each entry must include:
-    - **Word (word):** The compound word containing the kanji.
-    - **Reading (reading):** The word's reading in **hiragana**, with its **Romaji** in parentheses (separated by a space).
-    - **Meaning (meaning):** The **Turkish** meaning of the word.
-    Ensure that all responses strictly adhere to this format.
+    Bir kullanıcı bir kanji karakteri hakkında bilgi istediğinde, aşağıdaki verileri sağlamalısın:
+
+    - **Kanji Karakteri (kanji):** İstenen kanji karakteri.  
+    - **Onyomi Okunuşları (onyomi):** Onyomi okunuşlarının **katakana** yazımı ve **Romaji** okunuşları parantez içinde (araya boşluk koy). Eğer onyomi yoksa "-" döndür.  
+    - **Kunyomi Okunuşları (kunyomi):** Kunyomi okunuşlarının **hiragana** yazımı ve **Romaji** okunuşları parantez içinde (araya boşluk koy). Eğer kunyomi yoksa "-" döndür.  
+    - **Anlamı (meaning):** Kanji karakterinin **Türkçe anlamı**.  
+    - **Geçerlilik Kontrolü (isValid):** Girilen kanjinin geçerli olup olmadığını belirten bir true veya false değeri.  
+    - **Toplam Çizgi Sayısı (strokeNumber):** Kanjiyi yazmak için gereken toplam çizgi sayısı.  
+    - **Örnek Kelimeler (examples):** Kanjinin içinde geçtiği birleşik kelimeler listesi. Her kelime şu bilgileri içermelidir:  
+    - **Kelime (word):** Kanji içeren birleşik kelime.  
+    - **Okunuş (reading):** Kelimenin **hiragana** yazımı ve **Romaji** okunuşu parantez içinde (araya boşluk koy).  
+    - **Anlamı (meaning):** Kelimenin **Türkçe anlamı**.  
+
+    Yanıtın kesinlikle yukarıdaki **Türkçe açıklamalara uygun ve tam formatlı olmalıdır**.
 `
 });
 
@@ -34,47 +36,47 @@ const generationConfig = {
     properties: {
       kanji: {
         type: "string",
-        description: "The requested kanji character.",
+        description: "İstenen kanji karakteri.",
       },
       onyomi: {
         type: "array",
-        description: "Onyomi readings in katakana with Romaji in parentheses (separated by a space). If none, return ['-'].",
+        description: "Onyomi okunuşları katakana ile yazılır ve Romaji okunuşları parantez içinde verilir (araya boşluk koy). Eğer onyomi yoksa ['-'] döndür.",
         items: { type: "string" },
       },
       kunyomi: {
         type: "array",
-        description: "Kunyomi readings in hiragana with Romaji in parentheses (separated by a space). If none, return ['-'].",
+        description: "Kunyomi okunuşları hiragana ile yazılır ve Romaji okunuşları parantez içinde verilir (araya boşluk koy). Eğer kunyomi yoksa ['-'] döndür.",
         items: { type: "string" },
       },
       meaning: {
         type: "string",
-        description: "The Turkish meaning of the kanji.",
+        description: "Kanji karakterinin Türkçe anlamı.",
       },
       isValid: {
         type: "boolean",
-        description: "Indicates if the given kanji is valid (true or false).",
+        description: "Verilen kanjinin geçerli olup olmadığını gösterir (true veya false).",
       },
       strokeNumber: {
         type: "integer",
-        description: "Total number of strokes in the kanji.",
+        description: "Kanjiyi yazmak için gereken toplam çizgi sayısı.",
       },
       examples: {
         type: "array",
-        description: "Example compound words using the kanji.",
+        description: "Kanjinin içinde geçtiği birleşik kelimelerin listesi.",
         items: {
           type: "object",
           properties: {
             word: {
               type: "string",
-              description: "A compound word that includes the kanji.",
+              description: "Kanji içeren birleşik kelime.",
             },
             reading: {
               type: "string",
-              description: "Reading in hiragana with Romaji in parentheses (separated by a space).",
+              description: "Kelimenin hiragana ile yazılmış hali ve Romaji okunuşu parantez içinde (araya boşluk koy).",
             },
             meaning: {
               type: "string",
-              description: "The Turkish meaning of the word.",
+              description: "Kelimenin Türkçe anlamı.",
             },
           },
           required: ["word", "reading", "meaning"],
@@ -92,6 +94,7 @@ const generationConfig = {
     ],
   },
 };
+
 
 
 
