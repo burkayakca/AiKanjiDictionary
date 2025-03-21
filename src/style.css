@@ -49,6 +49,11 @@
         background-color: var(--dark-bg)
     }
 
+    h2 {
+        color: var(--dark-text);
+        margin : 5px;
+    }
+
     .input-p {
         color: var(--dark-text)
     }
