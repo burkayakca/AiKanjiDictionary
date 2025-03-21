@@ -3,7 +3,7 @@
 ## Description
 AiKanjiDictionary is a project aimed at providing an AI-powered (Gemini) dictionary for Kanji characters. It leverages machine learning and natural language processing to offer accurate and efficient Kanji translations and definitions.
 
-** "Turkish" adlı branch üzerinden Türkçe sürüme de erişebilirsiniz. (You can also access the Turkish version in the Turkish branch)**
+**"Turkish" adlı branch üzerinden Türkçe sürüme de erişebilirsiniz. (You can also access the Turkish version in the Turkish branch)**
 
 ## Installation
 To install and set up the AiKanjiDictionary project, follow these steps:
