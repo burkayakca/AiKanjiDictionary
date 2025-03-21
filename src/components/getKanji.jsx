@@ -5,7 +5,8 @@ const genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
 const model = genAI.getGenerativeModel({
   model: "gemini-2.0-flash",
   systemInstruction: `
-    You are a helpful assistant that provides detailed information about Japanese kanji. 
+    You are a helpful assistant that provides detailed information about Japanese kanji.
+    Provide the meanings in Turkish language 
     When a user asks about a kanji, respond with the following structured data in JSON format:
     
     - Kanji Character (kanji): The requested kanji character.

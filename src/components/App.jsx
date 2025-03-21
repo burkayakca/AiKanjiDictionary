@@ -32,11 +32,11 @@ function App() {
                 setErrorMessage(""); // Clear any previous error
             } else {
                 setJsonfile(null);
-                setErrorMessage("Invalid Query. Please try again with a valid query.");
+                setErrorMessage("Geçersiz Sorgu. Lütfen Tekrar Deneyin.");
             }
         } catch (error) {
             console.error('Error fetching the Kanji data:', error);
-            setErrorMessage("An error occurred while fetching the Kanji data. Please try again.");
+            setErrorMessage("Kanci verisi yüklenirken bir hata meydana geldi.");
         } finally {
             setIsLoading(false); // Hide loader
         }
@@ -45,26 +45,28 @@ function App() {
     return (
       <div>
         <div>
-          <h2>AI Kanji Dictionary</h2>
-          <input
-            className="form-control-md"
-            type="text"
-            value={inputKanji}
-            onChange={(e) => setInputKanji(e.target.value)}
-            placeholder="Enter Kanji"
-          />
-          <button
-            className="btn btn-primary btn-sm text-nowrap"
-            type="submit"
-            onClick={handleFetchKanji}
-            disabled={isLoading} // Disable button while loading
-          >
-            {isLoading ? "Loading..." : "Submit"} {/* Show loading text */}
-          </button>
+          <div className="center-container">
+            <h2 className="center">YZ Kanci Sözlüğü</h2> {/* Always centered */}
+            <input
+              className="form-control-md"
+              type="text"
+              value={inputKanji}
+              onChange={(e) => setInputKanji(e.target.value)}
+              placeholder="Kanci Giriniz"
+            />
+            <button
+              className="btn btn-primary btn-sm text-nowrap"
+              type="submit"
+              onClick={handleFetchKanji}
+              disabled={isLoading} // Disable button while loading
+            >
+              {isLoading ? "Yükleniyor" : "Gönder"} {/* Show loading text */}
+            </button>
+          </div>
         </div>
-        
+
         <dl className="dictionary">
-          {jsonfile ? createEntry(jsonfile, 0) : <p className="input-p">Waiting for query / No Data</p>}
+          {jsonfile ? createEntry(jsonfile, 0) : <p className="input-p">Sorgu bekleniyor / Veri bulunamadı.</p>}
         </dl>
       </div>
     );

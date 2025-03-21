@@ -9,11 +9,10 @@
     --dark-table-bg: #333;
     --dark-border: #4CAF50;
 
-    --accent-color: #4CAF50;
     --accent-green: #14A44D;
     --accent-blue: #3B71CA;
     --accent-yellow: #E4A11B;
-    --accent-red: #DC4C64;
+    --accent-color: #DC4C64;
 }
 
 /* Light Mode */
@@ -21,6 +20,11 @@
 
     body {
         background-color: var(--light-bg)
+    }
+
+    h2 {
+        color: var(--light-text);
+        margin : 10px;
     }
 
     .input-p {
@@ -36,7 +40,7 @@
     .kanji-container th { background: var(--accent-color); color: white; }
     .kanji-container td { border-bottom: 1px solid var(--light-border); }
 
-        .kanji-input {
+    .kanji-input {
         border: 2px solid var(--light-text);
         color: var(--light-text);
     }
@@ -51,7 +55,7 @@
 
     h2 {
         color: var(--dark-text);
-        margin : 5px;
+        margin : 10px;
     }
 
     .input-p {
@@ -78,7 +82,17 @@
     font-weight: 400;
     font-style: normal;
 }
-  
+
+.center-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 600px; /* Optional: Limit the width */
+}
+
 body{
     display: flex;
     justify-content: center;
@@ -129,8 +143,14 @@ body{
 }
 
 .kanji-p {
-    font-size:18px;
-    
+    font-size:18px;   
+}
+
+.turkish {
+    font-family: "Noto Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
 }
 
 .btn {
