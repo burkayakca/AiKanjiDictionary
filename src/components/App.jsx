@@ -44,7 +44,7 @@ function App() {
 
     return (
       <div>
-        <div>
+        <div className="center-container">
           <h2>AI Kanji Dictionary</h2>
           <input
             className="form-control-md"

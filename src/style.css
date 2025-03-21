@@ -9,11 +9,10 @@
     --dark-table-bg: #333;
     --dark-border: #4CAF50;
 
-    --accent-color: #4CAF50;
     --accent-green: #14A44D;
     --accent-blue: #3B71CA;
     --accent-yellow: #E4A11B;
-    --accent-red: #DC4C64;
+    --accent-color: #DC4C64;
 }
 
 /* Light Mode */
@@ -25,6 +24,11 @@
 
     .input-p {
         color: var(--light-text)
+    }
+
+    h2 {
+        color: var(--light-text);
+        margin : 10px;
     }
     
     .kanji-container {
@@ -51,7 +55,7 @@
 
     h2 {
         color: var(--dark-text);
-        margin : 5px;
+        margin : 10px;
     }
 
     .input-p {
@@ -71,6 +75,16 @@
         border: 2px solid var(--dark-text);
         color: var(--dark-text);
     }
+}
+
+.center-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 600px; /* Optional: Limit the width */
 }
 
 .emoji {
